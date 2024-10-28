@@ -10,7 +10,7 @@ pub struct BuildToolchainCmd {}
 
 impl BuildToolchainCmd {
     pub fn run(&self) -> Result<()> {
-        // Get enviroment variables.
+        // Get environment variables.
         let github_access_token = std::env::var("GITHUB_ACCESS_TOKEN");
         let build_dir = std::env::var("SP1_BUILD_DIR");
 
@@ -115,7 +115,7 @@ impl BuildToolchainCmd {
         for tool in tools_bin_dir.read_dir()? {
             let tool = tool?;
             let tool_name = tool.file_name();
-            std::fs::copy(&tool.path(), target_bin_dir.join(tool_name))?;
+            std::fs::copy(tool.path(), target_bin_dir.join(tool_name))?;
         }
 
         // Link the toolchain to rustup.
